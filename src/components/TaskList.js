@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import Task from "./Task";
 
@@ -50,3 +51,16 @@ export default function TaskList({ loading, tasks, onPinTask, onArchiveTask }) {
     );
   }
 }
+
+TaskList.propTypes = {
+  // Check if it's in loading state
+  loading: PropTypes.bool,
+  // The list of tasks
+  tasks: PropTypes.arrayOf(Task.propTypes.task).isRequired,
+  // Events to change the task to pinned or archived
+  onPinTask: PropTypes.func,
+  onArchiveTask: PropTypes.func,
+};
+TaskList.defaultProps = {
+  loading: false,
+};
